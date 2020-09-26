@@ -1,24 +1,23 @@
 import React from "react";
+import "./my-normalize.css";
 import "./App.css";
-import { BrowserRouter, Route } from "react-router-dom";
+
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Homepage from "./components/Homepage";
-import Products from "./components/Products";
-import ProductDetail from "./components/ProductDetail";
-
+import FlashCards from "./components/FlashCards";
+import ManageCards from "./components/ManageCards";
 const App = () => {
-  const basePath = "/products";
-
   return (
     <div className="main-container">
-      <BrowserRouter>
+      <Router>
+        <Header />
         <div className="inner-content">
-          <Header basePath={basePath} />
-          <Route path="/" exact component={Homepage} />
-          <Route path={"/:basePath"} exact component={Products} />
-          <Route path={"/:basePath/:id"} exact component={ProductDetail} />
+          <Route exact path="/" component={Homepage} />
+          <Route exact path="/flash-cards" component={FlashCards} />
+          <Route exact path="/manage-cards" component={ManageCards} />
         </div>
-      </BrowserRouter>
+      </Router>
     </div>
   );
 };
